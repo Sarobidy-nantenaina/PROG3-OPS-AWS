@@ -10,3 +10,11 @@ Resources:
       Tags:
         - Key: Name
           Value: MyS3Bucket
+  
+  BucketSSMParameters:
+    My_S3_Parameter:
+      Type: AWS::SSM::Parameter
+      Properties:
+        Name: /S3_Parameter/arn
+        Type: String
+        Value: !GetAtt Bucket_S3.Arn
