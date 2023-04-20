@@ -10,11 +10,10 @@ Resources:
       Tags:
         - Key: Name
           Value: MyS3Bucket
-  
-  BucketSSMParameters:
-    My_S3_Parameter:
-      Type: AWS::SSM::Parameter
-      Properties:
-        Name: /S3_Parameter/arn
-        Type: String
-        Value: !GetAtt Bucket_S3.Arn
+  MyParameterS3:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "/my/parameter"
+      Type: "String"
+      Value: !Join [ "", ["arn:aws:s3:::", !Ref Bucket_S3] ]
+
